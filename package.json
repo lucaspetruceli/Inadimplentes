@@ -1,0 +1,22 @@
+{
+  "name": "inadimplentes",
+  "version": "1.0.1",
+  "description": "App base",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "screencast.",
+    "rest.",
+    "restful"
+  ],
+  "author": "Lucas Petruceli",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.10",
+    "validator": "^5.1.0"
+  }
+}
