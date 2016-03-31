@@ -24,7 +24,7 @@ db.once('open', function() {
            fullname: String,
            email: String,
            password: String,
-           created_at: new Date()
+           created_at: Date
            
        });
     User = mongoose.model('User', userSchema);
