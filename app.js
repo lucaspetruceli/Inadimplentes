@@ -2,6 +2,8 @@ var app = require('./app_config.js');
 
 var user_controller = require('./controller/user_controller.js');
 
+var conta_controller = require('./controller/conta_controller.js');
+
 var validator = require('validator');
 
 app.get('/', function(req, res){   
@@ -120,7 +122,7 @@ app.put('/contas', function(req, res){
   var iduser = validator.trim(validator.escape(req.param('iduser')));
   var idadmin = validator.trim(validator.escape(req.param('idadmin')));
 
-  conta_controller.update(descricao,valortotal,status,iduser,idadmin, function(resp){
+  conta_controller.update(id, descricao,valortotal,status,iduser,idadmin, function(resp){
       res.json(resp);
   });
 

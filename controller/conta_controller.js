@@ -64,11 +64,11 @@ exports.update = function(id, descricao, valortotal, status, iduser, idadmin, ca
     if(status){
         conta.status = status;
     }
-        if(iduser){
-        conta.iduser = iduser;
+      if(iduser){
+      conta.iduser = iduser;
     }
-        if(idadmin){
-        conta.idadmin = idadmin;
+      if(idadmin){
+      conta.idadmin = idadmin;
     }
 
     conta.save(function(error,conta) {
