@@ -50,7 +50,7 @@ app.get('/users', function(req, res){
         }
         else
         {         
-                res.json(user);
+                res.json(users);
         } 
         });
     
