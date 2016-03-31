@@ -28,19 +28,20 @@ exports.user = function(id, callback){
     });
 };
 
-exports.save = function(fullname, email, password, callback){
+exports.save = function(fullname, email, password, tipoUsu, callback){
 
 	   new db.User({
       'fullname': fullname,
       'email': email,
       'password': password,
-      'created_at': new Date()
+      'created_at': new Date(),
+      'tipoUsu': tipoUsu
 
       }).save(function(error, user){
       
       if(error){
           
-        callback({error: 'Nao foi possivel salver o usuario'});
+        callback({error: 'Nao foi possivel salvar o usuario'});
       }
       else
       {
@@ -50,7 +51,7 @@ exports.save = function(fullname, email, password, callback){
 
 };
 
-exports.update = function(id, fullname, email, password, callback){
+exports.update = function(id, fullname, email, password, tipoUsu, callback){
 
     db.User.findById(id, function(error, user){
     if(fullname){
@@ -62,10 +63,13 @@ exports.update = function(id, fullname, email, password, callback){
     if(password){
         user.password = password;
     }
+    if(tipoUsu){
+    user.tipoUsu = tipoUsu;
+    }
 
     user.save(function(error,user) {
         if(error){
-            callback({error: 'Nao foi possivel salver o usuario'});
+            callback({error: 'Nao foi possivel atualizar o usuario'});
         }
         else
         {

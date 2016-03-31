@@ -13,8 +13,21 @@ db.once('open', function() {
            fullname: String,
            email: String,
            password: String,
-           created_at: Date
+           created_at: Date,
+           tipoUsu: String
            
        });
     exports.User = mongoose.model('User', userSchema);
+
+       var contaSchema = mongoose.Schema({
+           
+           descricao: String,
+           valortotal: Number,
+           status: String,
+           iduser: String,
+           idadmin: String,
+           created_at: Date
+           
+       });
+    exports.Conta = mongoose.model('Conta', contaSchema);
 });
