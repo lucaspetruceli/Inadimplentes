@@ -33,11 +33,37 @@ db.once('open', function() {
 app.listen(port);
 
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(req, res){
+           
+        res.end('Servidor ON!');
+});
+
+app.get('/users', function(req, res){
+        
+        User.find({}, function(error, users){
+
+        if(error){           
+            res.json({error: 'Nao foi possivel retornar os usuarios'});
+        }
+        else
+        {         
+                res.json(user);
+        } 
+        });
     
-    new User({
+});
+
+app.get('/users/:id', function(req, res){
+        
+        
+});
+
+app.post('/users', function(req, res){
+        
+        new User({
         fullname: 'Joao',
         email: 'email@email.com',
         password: 123456,
@@ -55,27 +81,6 @@ app.get('/', function(req, res){
                 res.json(user);
         }    
     });
-        
-       // res.end('Servidor ON!');
-});
-
-app.get('/users', function(req, res){
-        
-    res.json([
-        {name: 'Joao'},
-        {name: 'Felipe'}
-    ]);
-    
-});
-
-app.get('/users/:id', function(req, res){
-        
-        
-});
-
-app.post('/users', function(req, res){
-        
-    res.end('post users')
 });
 
 app.put('/users', function(req, res){
