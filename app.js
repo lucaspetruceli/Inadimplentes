@@ -32,7 +32,7 @@ app.post('/users', function(req, res){
   var fullname = validator.trim(validator.escape(req.param('fullname')));
   var email = validator.trim(validator.escape(req.param('email')));
   var password = validator.trim(validator.escape(req.param('password')));
-  var tipoUsu = tipoUsu.trim(validator.escape(req.param('tipoUsu')));
+  var tipoUsu = validator.trim(validator.escape(req.param('tipoUsu')));
 
 
   user_controller.save(fullname,email,password, tipoUsu, function(resp){
@@ -47,7 +47,7 @@ app.put('/users', function(req, res){
   var fullname = validator.trim(validator.escape(req.param('fullname')));
   var email = validator.trim(validator.escape(req.param('email')));
   var password = validator.trim(validator.escape(req.param('password')));
-  var tipoUsu = tipoUsu.trim(validator.escape(req.param('tipoUsu')));
+  var tipoUsu = validator.trim(validator.escape(req.param('tipoUsu')));
 
   user_controller.update(id, fullname, email, password, tipoUsu, function(resp){
       res.json(resp);
