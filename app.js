@@ -2,7 +2,9 @@ var express = require('express');
 
 var app = express();
 
-app.listen(5000);
+var port = process.env.PORT || 1337;
+
+app.listen(port);
 
 app.get('/', Function(req, res){
         
