@@ -4,7 +4,12 @@ var app = express();
 
 var port = process.env.PORT || 1337;
 
+var bodyParser = require('body-parser');
+
 app.listen(port);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(req, res){
         
@@ -13,7 +18,10 @@ app.get('/', function(req, res){
 
 app.get('/users', function(req, res){
         
-    
+    res.json([
+        {name: 'Joao'},
+        {name: 'Felipe'}
+    ]);
     
 });
 
