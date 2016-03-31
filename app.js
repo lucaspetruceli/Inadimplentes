@@ -6,7 +6,7 @@ var port = process.env.PORT || 1337;
 
 app.listen(port);
 
-app.get('/', Function(req, res){
+app.get('/', function(req, res){
         
         res.end('Servidor ON!');
 });
