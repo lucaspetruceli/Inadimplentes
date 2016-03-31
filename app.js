@@ -63,24 +63,24 @@ app.get('/users/:id', function(req, res){
 
 app.post('/users', function(req, res){
         
-        new User({
-        fullname: 'Joao',
-        email: 'email@email.com',
-        password: 123456,
-        creat_at: new Date()
+    //     new User({
+    //     fullname: 'Joao',
+    //     email: 'email@email.com',
+    //     password: 123456,
+    //     creat_at: new Date()
     
-        }).save(function(error, user){
+    //     }).save(function(error, user){
         
-        if(error){
+    //     if(error){
             
-            res.json({error: 'Nao foi possivel salver o usuario'});
-        }
-        else
-        {
+    //         res.json({error: 'Nao foi possivel salver o usuario'});
+    //     }
+    //     else
+    //     {
                 
-                res.json(user);
-        }    
-    });
+    //             res.json(user);
+    //     }    
+    // });
 });
 
 app.put('/users', function(req, res){
