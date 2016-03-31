@@ -58,37 +58,100 @@ app.get('/users', function(req, res){
 
 app.get('/users/:id', function(req, res){
         
-        
+        var id = req.param('id');
+
+        User.findById(id, function(error, user){
+
+        if(error){           
+            res.json({error: 'Nao foi possivel retornar o usuario'});
+        }
+        else
+        {         
+                res.json(user);
+        } 
+        });
+    
 });
 
 app.post('/users', function(req, res){
         
-    //     new User({
-    //     fullname: 'Joao',
-    //     email: 'email@email.com',
-    //     password: 123456,
-    //     creat_at: new Date()
     
-    //     }).save(function(error, user){
+var fullname = req.param('fullname');
+var email = req.param('email');
+var password = req.param('password');
+
+
+ new User({
+    'fullname': fullname,
+    'email': email,
+    'password': password,
+    'created_at': new Date()
+
+    }).save(function(error, user){
+    
+    if(error){
         
-    //     if(error){
-            
-    //         res.json({error: 'Nao foi possivel salver o usuario'});
-    //     }
-    //     else
-    //     {
-                
-    //             res.json(user);
-    //     }    
-    // });
+      res.json({error: 'Nao foi possivel salver o usuario'});
+    }
+    else
+    {
+      res.json(user);
+    }    
+    });
 });
 
-app.put('/users', function(req, res){
+app.put('/users', function(req, res){      
+  var id = req.param('id');
+  var fullname = req.param('fullname');
+  var email = req.param('email');
+  var password = req.param('password');
+
+  User.findById(id, function(error, user){
+    if(fullname){
+      user.fullname = fullname;
+    }
+    if(email){  
+      user.email = email;
+    }
+    if(password){
         
-    res.end('put user')
+        user.password = password;
+    }
+
+    user.save(function(error,user) {
+        if(error){
+            res.json({error: 'Nao foi possivel salver o usuario'});
+        }
+        else
+        {
+            res.json(user);
+        }
+
+    });
+
+  });
 });
+
 
 app.delete('/users/:id', function(req, res){
         
-    res.end('delete user')
+        var id = req.param('id');
+
+        User.findById(id, function(error, user){
+
+        if(error){           
+            res.json({error: 'Nao foi possivel retornar o usuario'});
+        }
+        else
+        {         
+                user.remove(function(error){
+
+                  if(!error){
+
+                    res.json({response: 'Usuario excluido com sucesso'})
+                  }
+
+                })
+        } 
+        });
 });
