@@ -9,7 +9,7 @@ var port = process.env.PORT || 1337;
 var allowCors = function(req, res, next){
 
 	res.header('Acess-Control-Allow-Origin', '*');
-	res.header('Acess-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+	res.header('Acess-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 	res.header('Acess-Control-Allow-Headers', 'Content-Type');
 	res.header('Acess-Control-Allow-Credentials', 'true');
 
@@ -17,6 +17,8 @@ var allowCors = function(req, res, next){
 
 }
 app.listen(port);
+
+app.use(allowCors);
 
 app.use(bodyParser.json());
 
