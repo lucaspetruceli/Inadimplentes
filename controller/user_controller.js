@@ -28,6 +28,20 @@ exports.user = function(id, callback){
     });
 };
 
+exports.validate = function(email, password, callback){
+
+        db.User.findOne({'email':email,'password':password}, function(error, user){
+
+        if(error){           
+            callback({error: 'Login ou senha inválidos'});
+        }
+        else
+        {         
+            callback(user);
+        } 
+    });
+};
+
 exports.save = function(fullname, email, password, tipoUsu, callback){
 
 	   new db.User({
