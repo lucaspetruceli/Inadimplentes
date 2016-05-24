@@ -43,8 +43,7 @@ app.post('/users', function(req, res){
 
 });
 
-app.post('/users/login', function(req, res){
-        
+app.post('/users/login', function(req, res){        
   var email = validator.trim(validator.escape(req.body.email.toString()));
   var password = validator.trim(validator.escape(req.body.password.toString()));
 
