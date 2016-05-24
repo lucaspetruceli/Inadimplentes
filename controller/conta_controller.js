@@ -1,8 +1,21 @@
 var db = require('../db_config.js');
 
-exports.list = function(callback){
+exports.listAdmin = function(idadmin,callback){
 
-        db.Conta.find({}, function (error, contas){
+        db.Conta.find({'idadmin':idadmin}, function (error, contas){
+          if(error){           
+              callback({error: 'Nao foi possivel retornar as contas'});
+          }
+          else
+          {         
+              callback(contas);
+          } 
+        });
+
+};
+exports.listUser = function(iduser,callback){
+
+        db.Conta.find({'iduser':iduser}, function (error, contas){
           if(error){           
               callback({error: 'Nao foi possivel retornar as contas'});
           }

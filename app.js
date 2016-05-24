@@ -90,13 +90,18 @@ app.delete('/users/:id', function(req, res){
 
 
 
-app.get('/contas/idadmin', function(req, res){
-        
-  conta_controller.list(function(resp){
+app.get('/contas/admin/:idadmin', function(req, res){
+  var idadmin = validator.trim(validator.escape(req.param('idadmin')));
+  conta_controller.listAdmin(idadmin,function(resp){
     res.json(resp);
   });
+});
 
-
+app.get('/contas/user/:iduser', function(req, res){
+  var iduser = validator.trim(validator.escape(req.param('iduser')));
+  conta_controller.listUser(iduser,function(resp){
+    res.json(resp);
+  });
 });
 
 app.get('/contas/:id', function(req, res){
