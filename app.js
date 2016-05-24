@@ -43,6 +43,17 @@ app.post('/users', function(req, res){
 
 });
 
+app.post('/users/login', function(req, res){
+        
+  var email = validator.trim(validator.escape(req.body.email.toString()));
+  var password = validator.trim(validator.escape(req.body.password.toString()));
+
+  user_controller.validate(email,password,function(resp){
+    res.json(resp);
+  });
+
+});
+
 app.put('/users', function(req, res){  
 
   var id = validator.trim(validator.escape(req.param('id')));

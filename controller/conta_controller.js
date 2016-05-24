@@ -2,7 +2,7 @@ var db = require('../db_config.js');
 
 exports.list = function(callback){
 
-        db.Conta.find({}, function(error, contas){
+        db.Conta.find({}, function (error, contas){
           if(error){           
               callback({error: 'Nao foi possivel retornar as contas'});
           }
@@ -16,7 +16,7 @@ exports.list = function(callback){
 
 exports.conta = function(id, callback){
 
-        db.Conta.findById(id, function(error, conta){
+        db.Conta.findById(id, function (error, conta){
 
         if(error){           
             callback({error: 'Nao foi possivel retornar a conta'});
@@ -54,7 +54,7 @@ exports.save = function(descricao, valortotal, status, iduser, idadmin, callback
 
 exports.update = function(id, descricao, valortotal, status, iduser, idadmin, callback){
 
-    db.Conta.findById(id, function(error, conta){
+    db.Conta.findById(id, function (error, conta){
     if(descricao){
       conta.descricao = descricao;
     }
@@ -71,7 +71,7 @@ exports.update = function(id, descricao, valortotal, status, iduser, idadmin, ca
       conta.idadmin = idadmin;
     }
 
-    conta.save(function(error,conta) {
+    conta.save(function (error,conta) {
         if(error){
             callback({error: 'Nao foi possivel atualizar a conta'});
         }
@@ -89,14 +89,14 @@ exports.update = function(id, descricao, valortotal, status, iduser, idadmin, ca
 exports.delete = function(id, idadmin, callback){
 
 
-    db.Conta.findById(id, function(error, conta){
+    db.Conta.findById(id, function (error, conta){
 
       if(error){           
           callback({error: 'Nao foi possivel retornar a conta'});
       }
       else
       { 
-        conta.remove(function(error){
+        conta.remove(function (error){
 
         if(!error){
             callback({response: 'Conta excluida com sucesso'})

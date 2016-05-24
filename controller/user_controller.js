@@ -2,7 +2,7 @@ var db = require('../db_config.js');
 
 exports.list = function(callback){
 
-        db.User.find({}, function(error, users){
+        db.User.find({}, function (error, users){
           if(error){           
               callback({error: 'Nao foi possivel retornar os usuarios'});
           }
@@ -16,7 +16,7 @@ exports.list = function(callback){
 
 exports.user = function(id, callback){
 
-        db.User.findById(id, function(error, user){
+        db.User.findById(id, function (error, user){
 
         if(error){           
             callback({error: 'Nao foi possivel retornar o usuario'});
@@ -53,7 +53,7 @@ exports.save = function(fullname, email, password, tipoUsu, callback){
 
 exports.update = function(id, fullname, email, password, tipoUsu, callback){
 
-    db.User.findById(id, function(error, user){
+    db.User.findById(id, function (error, user){
     if(fullname){
       user.fullname = fullname;
     }
@@ -85,7 +85,7 @@ exports.update = function(id, fullname, email, password, tipoUsu, callback){
 exports.delete = function(id, callback){
 
 
-    db.User.findById(id, function(error, user){
+    db.User.findById(id, function (error, user){
 
       if(error){           
           callback({error: 'Nao foi possivel retornar o usuario'});
@@ -99,6 +99,20 @@ exports.delete = function(id, callback){
           }
 
         })
+      } 
+    });
+
+};
+
+exports.validate = function(email, password, callback){
+    db.User.findOne({email}, function (error, user){
+      if(error || user == null){           
+          callback({error: 'Email ou senha inválidos.'});
+      } else {         
+        if (user.password == password)
+          callback({user: user});
+        else
+          callback({error: 'Email ou senha inválidos.'});
       } 
     });
 
